@@ -65,7 +65,7 @@ _prepare_component::portmaster() {
             's|export controlfolder="/var/data/PortMaster"|export controlfolder="${XDG_DATA_HOME:-$HOME/.local/share}/PortMaster"|g' \
             "$control_file"
           sed -i \
-            's|^export LD_LIBRARY_PATH=.*|export LD_LIBRARY_PATH="/usr/lib:/lib:/app/retrodeck/components/shared-libs/org.kde.Sdk/6.11/:/app/retrodeck/components/shared-libs/org.kde.Platform/6.11/:/app/retrodeck/components/shared-libs/org.freedesktop.Platform/25.08/:$LD_LIBRARY_PATH"|' \
+            '\#^export LD_LIBRARY_PATH="/usr/lib:/lib:/app/retrodeck/components/shared-libs#s|^export LD_LIBRARY_PATH=.*|export LD_LIBRARY_PATH="/usr/lib:/lib:/app/retrodeck/components/shared-libs/org.kde.Sdk/6.11/:/app/retrodeck/components/shared-libs/org.kde.Platform/6.11/:/app/retrodeck/components/shared-libs/org.freedesktop.Platform/25.08/:$LD_LIBRARY_PATH"|' \
             "$control_file"
         fi
       done

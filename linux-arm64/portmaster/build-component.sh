@@ -32,8 +32,11 @@ if [[ -n "${PORTMASTER_ARCHIVE_PATH:-}" ]]; then
   fi
 
   recipe_dir="$(mktemp -d "${TMPDIR:-/tmp}/retrodeck-portmaster-recipe.XXXXXX")"
-  jq --arg archive "$PORTMASTER_ARCHIVE_PATH" \
-    --arg version "2026.11.12-1059" \
+  # The recipe's file-rename asset moves its source: hand it a copy, not the caller's archive.
+  archive="$recipe_dir/retrodeck.portmaster.zip"
+  cp "$PORTMASTER_ARCHIVE_PATH" "$archive"
+  jq --arg archive "$archive" \
+    --arg version "${PORTMASTER_ARCHIVE_VERSION:-2026.11.12-1059}" \
     '.portmaster[0].source_type = "local"
      | .portmaster[0].source_url = $archive
      | (.portmaster[0].assets[] | select(.type == "file-rename").source) = $archive
