@@ -2276,6 +2276,268 @@
 		{
 		}
 	}
+	"group"
+	{
+		"id"		"43"
+		"mode"		"dpad"
+		"name"		""
+		"description"		""
+		"inputs"
+		{
+			"dpad_north"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"xinput_button dpad_up, , "
+						}
+						"settings"
+						{
+							"haptic_intensity"		"0"
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+			"dpad_south"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"xinput_button dpad_down, , "
+						}
+						"settings"
+						{
+							"haptic_intensity"		"0"
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+			"dpad_east"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"xinput_button dpad_right, , "
+						}
+						"settings"
+						{
+							"haptic_intensity"		"0"
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+			"dpad_west"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"xinput_button dpad_left, , "
+						}
+						"settings"
+						{
+							"haptic_intensity"		"0"
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+		}
+	}
+	"group"
+	{
+		"id"		"44"
+		"mode"		"dpad"
+		"name"		""
+		"description"		""
+		"inputs"
+		{
+			"dpad_north"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"key_press LEFT_CONTROL, Increase Emulation Speed, , "
+							"binding"		"key_press 1, Increase Emulation Speed, , "
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+			"dpad_south"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"key_press LEFT_CONTROL, Decrease Emulation Speed, , "
+							"binding"		"key_press 2, Decrease Emulation Speed, , "
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+			"dpad_east"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"key_press LEFT_CONTROL, Next State Slot, , "
+							"binding"		"key_press K, Next State Slot, , "
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+			"dpad_west"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"key_press LEFT_CONTROL, Previous State Slot, , "
+							"binding"		"key_press J, Previous State Slot, , "
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+		}
+	}
+	"group"
+	{
+		"id"		"45"
+		"mode"		"dpad"
+		"name"		""
+		"description"		""
+		"inputs"
+		{
+			"dpad_north"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"xinput_button dpad_up, , "
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+			"dpad_south"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"xinput_button dpad_down, , "
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+			"dpad_east"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"xinput_button dpad_right, , "
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+			"dpad_west"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"xinput_button dpad_left, , "
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+			"click"
+			{
+				"activators"
+				{
+					"Full_Press"
+					{
+						"bindings"
+						{
+							"binding"		"mouse_button RIGHT, , "
+						}
+						"settings"
+						{
+							"haptic_intensity"		"0"
+						}
+					}
+				}
+				"disabled_activators"
+				{
+				}
+			}
+		}
+	}
 	"preset"
 	{
 		"id"		"0"
@@ -2285,6 +2547,7 @@
 			"7"		"switch active"
 			"0"		"button_diamond active"
 			"1"		"left_trackpad active"
+			"43"		"dpad active"
 			"2"		"right_trackpad inactive"
 			"6"		"right_trackpad inactive"
 			"19"		"right_trackpad inactive"
@@ -2305,6 +2568,7 @@
 			"10"		"switch active"
 			"11"		"button_diamond active"
 			"12"		"left_trackpad active"
+			"44"		"dpad active"
 			"13"		"right_trackpad inactive"
 			"20"		"right_trackpad active"
 			"14"		"joystick inactive"
@@ -2324,6 +2588,7 @@
 			"28"		"switch active"
 			"29"		"button_diamond active"
 			"30"		"left_trackpad active"
+			"45"		"dpad active"
 			"31"		"right_trackpad inactive"
 			"36"		"right_trackpad active"
 			"32"		"joystick active"
