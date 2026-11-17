@@ -6,6 +6,7 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 components_root="$(git -C "$script_dir/../.." rev-parse --show-toplevel)"
 retrodeck_root="$(dirname "$components_root")/RetroDECK-arm-0.11.0"
 manifest="$retrodeck_root/net.retrodeck.esde-arm64-build.yml"
+state_dir="${FLATPAK_BUILDER_STATE_DIR:-$retrodeck_root/.flatpak-builder-state}"
 build_dir="${ESDE_BUILD_DIR:-$retrodeck_root/.flatpak-builder/esde-arm64-component}"
 artifact_dir="$script_dir/artifacts"
 
@@ -24,7 +25,7 @@ fi
 mkdir -p "$(dirname "$build_dir")"
 (
   cd "$retrodeck_root"
-  flatpak-builder --user --force-clean --jobs="${ESDE_BUILD_JOBS:-2}" --arch=aarch64 \
+  flatpak-builder --user --state-dir="$state_dir/esde" --force-clean --jobs="${ESDE_BUILD_JOBS:-2}" --arch=aarch64 \
     --install-deps-from=flathub "$build_dir" "$manifest"
 )
 
