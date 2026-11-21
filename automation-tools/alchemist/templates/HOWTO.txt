@@ -390,7 +390,7 @@ Valid Key Value Reference:
     - http (Normal web downloads. Web redirects are supported in the event that direct download links are not available)
     - github-release (Releases hosted on GitHub, where the {VERSION} can be determined using the GitHub API or will be replaced directly by the 'version' recipe key value)
     - git (Cloning of a desired git repo)
-    - flatpak-id (Downloading a flatpak application from the Flathub repo and installing it into host system for file extraction)
+    - flatpak-id (Downloading a flatpak application from Flathub for file extraction)
     - local (Used in multi-step extractions (such as nested archives) or for pulling files which otherwise already exist on the build host)
 
   Additional types can be supported through the creation of new "downloaders" plugins. The plugin code structure is generally consistent, so refer to existing plugins for information on creating new ones.
@@ -428,7 +428,7 @@ Valid Key Value Reference:
 .<root key>.dest
   The destination of a given download or extraction can be provided using this key. The path provided here is absolute, so be sure to use placeholders appropriately.
   This key is optional, and if omitted or empty it will be defaulted to '$WORKDIR'.
-  This key also has a unique use for 'flatpak_id' source types, where it defines the install type (user/system) for the Flatpak install. If the key is empty or omitted the Flatpak install type will default to 'user'.
+  This key also has a unique use for 'flatpak_id' source types, where it defines the install type (user/system). If the key is empty or omitted the Flatpak install type defaults to 'user'.
   NOTE: Flatpak 'system' mode installs may require sudo depending on the environemt, so should be used with caution.
 
 .<root key>.assets.[]
@@ -544,6 +544,9 @@ $FLATPAK_SYSTEM_ROOT
 
 $FLATPAK_DEFAULT_INSTALL_MODE
   This sets the default install "mode" used for local Flatpak installed. It defaults to 'user' as 'system' mode installs may require sudo depending on the environment.
+
+$ALCHEMIST_FLATPAK_MODE
+  Optional override for Flatpak source handling. The default 'install' mode honors each recipe's user/system destination. Set 'directory' to put temporary app and runtime deployments under '$WORKDIR/flatpak-directory-mode'; they are removed with the component work directory and do not create desktop entries in the normal user session. In VM builds, placing '$WORKDIR' on a host-shared build directory avoids leaving downloaded app and runtime data in the VM's persistent Flatpak installation, which can needlessly grow the VM disk. Example: 'ALCHEMIST_FLATPAK_MODE=directory bash build-component.sh'.
 
 $FLATHUB_REPO
   This is the current repo for the Flathub distribution system (currently 'https://flathub.org/repo/flathub.flatpakrepo'). Can be adjusted as needed if the default repo ever changes.

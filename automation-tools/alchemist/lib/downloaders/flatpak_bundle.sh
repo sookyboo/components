@@ -14,6 +14,10 @@ download() {
   local max_delay="${7:-30}"
   local resolve_version="$8"
 
+  if [[ "$ALCHEMIST_FLATPAK_MODE" == "directory" ]]; then
+    flatpak_install_mode="user"
+  fi
+
   if [[ "$resolve_version" == "true" ]]; then
     echo "DOWNLOADED_VERSION=$flatpak_id"
     return 0
@@ -46,6 +50,15 @@ download() {
     log error "Download failed: $flatpak_bundle_file"
     return 1
   fi
+
+  # Resolve the deployment location because temporary directory mode can use
+  # a different XDG data root from the user's normal Flatpak installation.
+  local install_location
+  install_location="$(flatpak info --"$flatpak_install_mode" --show-location "$flatpak_id" 2>/dev/null)" || {
+    log error "Could not locate the installed Flatpak ref for $flatpak_id"
+    return 1
+  }
+  final_dest="$install_location/files"
 
   # Verify local Flatpak install exists
   if [[ ! -d "$final_dest" ]]; then

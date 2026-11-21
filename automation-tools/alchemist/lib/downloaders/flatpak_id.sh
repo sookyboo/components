@@ -16,6 +16,17 @@ download() {
   local resolve_version="$8"
 
   local resolved_flatpak_version="$flatpak_version"
+  local directory_mode="false"
+
+  if [[ "$ALCHEMIST_FLATPAK_MODE" == "directory" ]]; then
+    # Directory mode overrides the recipe's user/system installation target.
+    flatpak_install_mode="user"
+    directory_mode="true"
+    if ! flatpak remote-add --user --if-not-exists flathub "$FLATHUB_REPO"; then
+      log error "Flathub could not be added to the temporary Flatpak directory"
+      return 1
+    fi
+  fi
 
   if [[ "$flatpak_version" == "latest" ]]; then # Resolve "latest" version if needed
     log info "Resolving $flatpak_version version for $flatpak_id"
@@ -32,7 +43,9 @@ download() {
     return 0
   fi
   
-  if [[ "$flatpak_install_mode" == "user" ]]; then
+  if [[ "$directory_mode" == "true" ]]; then
+    final_dest="$FLATPAK_USER_ROOT/app/$flatpak_id/current/$resolved_flatpak_version/files"
+  elif [[ "$flatpak_install_mode" == "user" ]]; then
     final_dest="$FLATPAK_USER_ROOT/app/$flatpak_id/current/$resolved_flatpak_version/files"
   elif [[ "$flatpak_install_mode" == "system" ]]; then
     final_dest="$FLATPAK_SYSTEM_ROOT/app/$flatpak_id/current/$resolved_flatpak_version/files"
@@ -82,7 +95,11 @@ download() {
     return 1
   fi
 
-  log info "Flatpak install completed successfully"
+  if [[ "$directory_mode" == "true" ]]; then
+    log info "Flatpak app unpacked in temporary directory: $final_dest"
+  else
+    log info "Flatpak install completed successfully"
+  fi
   echo "DOWNLOADED_VERSION=$resolved_flatpak_version"
   echo "DOWNLOADED_FILE=$final_dest"
   return 0

@@ -43,6 +43,22 @@ transmute() {
     rm -rf "$WORKDIR"
   fi
 
+  case "$ALCHEMIST_FLATPAK_MODE" in
+    install)
+      ;;
+    directory)
+      # Isolate Flatpak deployments and runtime downloads under this component's
+      # work directory. The normal user installation and desktop exports stay untouched.
+      export XDG_DATA_HOME="$WORKDIR/flatpak-directory-mode"
+      export FLATPAK_USER_ROOT="$XDG_DATA_HOME/flatpak"
+      mkdir -p "$XDG_DATA_HOME"
+      ;;
+    *)
+      log error "Invalid ALCHEMIST_FLATPAK_MODE '$ALCHEMIST_FLATPAK_MODE' (expected install or directory)"
+      return 1
+      ;;
+  esac
+
   export COMPONENT_ARTIFACT_ROOT="$WORKDIR/$COMPONENT_NAME-artifact" # Initialize the final destination for kept files
   if [[ ! "$RESOLVE_VERSION" == "true" ]]; then
     mkdir -p "$COMPONENT_ARTIFACT_ROOT"
