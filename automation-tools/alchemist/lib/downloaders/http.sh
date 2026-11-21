@@ -18,8 +18,13 @@ download() {
   local final_url="$url"
   local final_dest="$dest"
 
+  # RetroArch ARM nightlies are published under the previous UTC date.
+  if [[ "$version" == "{LAST_NIGHT_DATE}" ]]; then
+    version="$(date -u -d 'yesterday' +%F)"
+  fi
+
   if [[ "$resolve_version" == "true" ]]; then
-    echo "DOWNLOADED_VERSION=$SOURCE_VERSION"
+    echo "DOWNLOADED_VERSION=$version"
     return 0
   fi
 
@@ -59,7 +64,7 @@ download() {
   log info "Destination: $final_dest"
 
   download_cmd() {
-    curl --silent --location --output "$final_dest" "$final_url" 2>&1
+    curl --silent --show-error --fail --location --output "$final_dest" "$final_url" 2>&1
   }
 
   if ! try "$max_retries" "$initial_delay" "$max_delay" download_cmd; then

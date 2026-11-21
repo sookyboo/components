@@ -1,10 +1,9 @@
 {
   "retroarch": [
     {
-      "source_url": "https://buildbot.libretro.com/nightly/linux/aarch64/2026-11-03_RetroArch.7z",
+      "source_url": "https://buildbot.libretro.com/nightly/linux/aarch64/{VERSION}_RetroArch.7z",
       "source_type": "http",
-      "version": "2026-11-03",
-      "sha256": "95ff29bf1fa408048647ba91c1acca2a5482361501f4f9145e02794ce9cbb671",
+      "version": "{LAST_NIGHT_DATE}",
       "dest": "retroarch-arm64",
       "extraction_type": "archive",
       "assets": [
@@ -16,7 +15,7 @@
         {
           "type": "create",
           "dest": "component_version",
-          "contents": "aarch64-nightly-2026-11-03"
+          "contents": "aarch64-nightly-$SOURCE_VERSION"
         }
       ],
       "libs": []
