@@ -1,49 +1,21 @@
 {
-  "ruffle": [
-    {
-      "source_url": "rs.ruffle.Ruffle",
-      "source_type": "flatpak_id",
-      "version": "da3f38eab890a15d9ab9b4284fd1d5a0da7a68ed50d6e0a82c23b4685ff63152",
-      "dest": "user",
-      "extraction_type": "flatpak",
-      "assets": [
-        {
-          "type": "dir",
-          "source": "bin",
-          "dest": "bin"
-        },
-        {
-          "type": "create",
-          "dest": "component_version",
-          "contents": "$SOURCE_VERSION"
-        },
-        {
-          "type": "dir",
-          "source": "$REPO_ROOT/$COMPONENT_NAME/rd_assets/rd_config",
-          "dest": "rd_config"
-        },
-        {
-          "type": "file",
-          "source": "$REPO_ROOT/$COMPONENT_NAME/component_functions.sh",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
-        },
-        {
-          "type": "file",
-          "source": "$REPO_ROOT/$COMPONENT_NAME/component_launcher.sh",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
-        },
-        {
-          "type": "file",
-          "source": "$REPO_ROOT/$COMPONENT_NAME/component_manifest.json",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
-        },
-        {
-          "type": "file",
-          "source": "$REPO_ROOT/linux-arm64/ruffle/component_recipe.json",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+  "ruffle": {
+    "parent": "../../ruffle/component_recipe.json",
+    "overrides": {
+      "sources": {
+        "app": {
+          "set": {
+            "version": "da3f38eab890a15d9ab9b4284fd1d5a0da7a68ed50d6e0a82c23b4685ff63152"
+          },
+          "assets": {
+            "recipe_file": {
+              "set": {
+                "source": "$RESOLVED_RECIPE_FILE"
+              }
+            }
+          }
         }
-      ],
-      "libs": []
+      }
     }
-  ]
+  }
 }

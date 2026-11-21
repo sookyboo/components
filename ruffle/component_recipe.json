@@ -10,40 +10,48 @@
         {
           "type": "dir",
           "source": "bin",
-          "dest": "bin"
+          "dest": "bin",
+          "id": "bin"
         },
         {
           "type": "create",
           "dest": "component_version",
-          "contents": "$SOURCE_VERSION"
+          "contents": "$SOURCE_VERSION",
+          "id": "component_version"
         },
         {
           "type": "dir",
           "source": "$REPO_ROOT/$COMPONENT_NAME/rd_assets/rd_config",
-          "dest": "rd_config"
+          "dest": "rd_config",
+          "id": "rd_config"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_functions.sh",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "component_functions"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_launcher.sh",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "component_launcher"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_manifest.json",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "manifest_file"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_recipe.json",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "recipe_file"
         }
       ],
-      "libs": []
+      "libs": [],
+      "id": "app"
     }
   ]
 }

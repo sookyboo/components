@@ -1,22 +1,29 @@
 {
-  "duckstation": [
-    {
-      "source_url": "https://github.com/stenzek/duckstation/releases/download/{VERSION}/DuckStation-arm64.AppImage",
-      "source_type": "github_release",
-      "version": "$DUCKSTATION_DESIRED_VERSION",
-      "extraction_type": "appimage",
-      "assets": [
-        { "type": "dir", "source": "usr/bin", "dest": "bin" },
-        { "type": "dir", "source": "usr/lib", "dest": "lib" },
-        { "type": "dir", "source": "usr/plugins", "dest": "plugins" },
-        { "type": "create", "dest": "component_version", "contents": "$SOURCE_VERSION" },
-        { "type": "dir", "source": "$REPO_ROOT/$COMPONENT_NAME/rd_assets/rd_config", "dest": "rd_config" },
-        { "type": "file", "source": "$REPO_ROOT/$COMPONENT_NAME/component_functions.sh", "dest": "$COMPONENT_ARTIFACT_ROOT" },
-        { "type": "file", "source": "$REPO_ROOT/linux-arm64/$COMPONENT_NAME/component_launcher.sh", "dest": "$COMPONENT_ARTIFACT_ROOT" },
-        { "type": "file", "source": "$REPO_ROOT/$COMPONENT_NAME/component_manifest.json", "dest": "$COMPONENT_ARTIFACT_ROOT" },
-        { "type": "file", "source": "$REPO_ROOT/linux-arm64/$COMPONENT_NAME/component_recipe.json", "dest": "$COMPONENT_ARTIFACT_ROOT" }
-      ],
-      "libs": []
+  "duckstation": {
+    "parent": "../../duckstation/component_recipe.json",
+    "overrides": {
+      "sources": {
+        "app": {
+          "set": {
+            "source_url": "https://github.com/stenzek/duckstation/releases/download/{VERSION}/DuckStation-arm64.AppImage"
+          },
+          "assets": {
+            "apprun_hooks": {
+              "remove": true
+            },
+            "component_launcher": {
+              "set": {
+                "source": "$REPO_ROOT/linux-arm64/$COMPONENT_NAME/component_launcher.sh"
+              }
+            },
+            "recipe_file": {
+              "set": {
+                "source": "$RESOLVED_RECIPE_FILE"
+              }
+            }
+          }
+        }
+      }
     }
-  ]
+  }
 }

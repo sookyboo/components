@@ -9,71 +9,85 @@
         {
           "type": "dir",
           "source": "usr/bin",
-          "dest": "bin"
+          "dest": "bin",
+          "id": "bin"
         },
         {
           "type": "dir",
           "source": "usr/lib",
-          "dest": "lib"
+          "dest": "lib",
+          "id": "lib"
         },
         {
           "type": "dir",
           "source": "usr/plugins",
-          "dest": "plugins"
+          "dest": "plugins",
+          "id": "plugins"
         },
         {
           "type": "create",
           "dest": "component_version",
-          "contents": "$SOURCE_VERSION"
+          "contents": "$SOURCE_VERSION",
+          "id": "component_version"
         },
         {
           "type": "dir",
           "source": "$REPO_ROOT/$COMPONENT_NAME/rd_assets/rd_config",
-          "dest": "rd_config"
+          "dest": "rd_config",
+          "id": "rd_config"
         },
         {
           "type": "dir",
           "source": "$REPO_ROOT/$COMPONENT_NAME/rd_assets/helper_files",
-          "dest": "helper_files"
+          "dest": "helper_files",
+          "id": "helper_files"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_functions.sh",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "component_functions"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_launcher.sh",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "component_launcher"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_manifest.json",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "manifest_file"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_recipe.json",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "recipe_file"
         }
       ],
       "libs": [
         {
           "library": "libGLEW.so.2.2",
           "source": "lib",
-          "dest": "lib"
+          "dest": "lib",
+          "id": "libglew"
         },
         {
           "library": "libGLU.so.1",
           "source": "lib",
-          "dest": "lib"
+          "dest": "lib",
+          "id": "libglu"
         },
         {
           "library": "libSDL3.so.0",
           "source": "lib",
-          "dest": "lib"
+          "dest": "lib",
+          "id": "libsdl3"
         }
-      ]
+      ],
+      "id": "app"
     }
   ]
 }

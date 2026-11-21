@@ -377,6 +377,11 @@ every object (the "core" recipe object and any listed in 'additional_sources') c
 
 Valid Key Value Reference:
 
+Recipe inheritance:
+  A recipe may inherit another recipe by replacing its source array with an object containing 'parent' and 'overrides'. The parent path is relative to the child recipe file. Parent source objects need unique 'id' fields; assets and libraries also need unique IDs when they are targeted by overrides.
+  Under 'overrides.sources', key each source change by its ID. A 'set' object merges fields into that source. Nested 'assets' and 'libs' objects apply the same rules by entry ID. Use 'remove': true to remove an inherited source, asset, or library. Entries not mentioned are inherited unchanged. Standalone recipes remain supported.
+  Example: { "example": { "parent": "../../example/component_recipe.json", "overrides": { "sources": { "app": { "set": { "version": "arm-version" }, "assets": { "recipe_file": { "set": { "source": "$REPO_ROOT/linux-arm64/example/component_recipe.json" } } }, "libs": { "x86_only_library": { "remove": true } } } } } } }
+
 .<root key>
   The root key of the JSON file is the component name. The value is assigned to the reusable variable '$COMPONENT_NAME'.
 

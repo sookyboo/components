@@ -10,57 +10,68 @@
         {
           "type": "dir",
           "source": "bin",
-          "dest": "bin"
+          "dest": "bin",
+          "id": "bin"
         },
         {
           "type": "dir",
           "source": "share/scummvm/",
-          "dest": "share/scummvm/"
+          "dest": "share/scummvm/",
+          "id": "share_scummvm"
         },
         {
           "type": "dir",
           "source": "share/soundfonts/",
-          "dest": "share/soundfonts/"
+          "dest": "share/soundfonts/",
+          "id": "share_soundfonts"
         },
         {
           "type": "dir",
           "source": "share/doc/",
-          "dest": "doc"
+          "dest": "doc",
+          "id": "doc"
         },
         {
           "type": "dir",
           "source": "share/licenses/org.scummvm.ScummVM/",
-          "dest": "doc/licenses"
+          "dest": "doc/licenses",
+          "id": "doc_licenses"
         },
         {
           "type": "dir",
           "source": "$REPO_ROOT/$COMPONENT_NAME/rd_assets/rd_config",
-          "dest": "rd_config"
+          "dest": "rd_config",
+          "id": "rd_config"
         },
         {
           "type": "create",
           "dest": "component_version",
-          "contents": "$SOURCE_VERSION"
+          "contents": "$SOURCE_VERSION",
+          "id": "component_version"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_functions.sh",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "component_functions"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_launcher.sh",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "component_launcher"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_manifest.json",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "manifest_file"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_recipe.json",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "recipe_file"
         }
       ],
       "libs": [
@@ -68,46 +79,55 @@
           "library": "libFLAC.so.14",
           "runtime_name": "org.freedesktop.Platform",
           "runtime_version": "25.08",
-          "dest": "shared-libs"
+          "dest": "shared-libs",
+          "id": "libflac"
         },
         {
           "library": "libtheoradec.so.2",
           "runtime_name": "org.freedesktop.Platform",
           "runtime_version": "25.08",
-          "dest": "shared-libs"
+          "dest": "shared-libs",
+          "id": "libtheoradec"
         },
         {
           "library": "libSDL3.so.0",
           "runtime_name": "org.freedesktop.Platform",
           "runtime_version": "25.08",
-          "dest": "shared-libs"
+          "dest": "shared-libs",
+          "id": "libsdl3"
         },
         {
           "library": "libfaad.so.2",
           "source": "lib",
-          "dest": "shared-libs"
+          "dest": "shared-libs",
+          "id": "libfaad"
         },
         {
           "library": "libmpeg2.so.0",
           "source": "lib",
-          "dest": "shared-libs"
+          "dest": "shared-libs",
+          "id": "libmpeg2"
         },
         {
           "library": "libmpeg2convert.so.0",
           "source": "lib",
-          "dest": "shared-libs"
+          "dest": "shared-libs",
+          "id": "libmpeg2convert"
         },
         {
           "library": "libmad.so.0",
           "source": "lib",
-          "dest": "shared-libs"
+          "dest": "shared-libs",
+          "id": "libmad"
         },
         {
           "library": "libfluidsynth.so.3",
           "source": "lib",
-          "dest": "shared-libs"
+          "dest": "shared-libs",
+          "id": "libfluidsynth"
         }
-      ]
+      ],
+      "id": "app"
     }
   ]
 }

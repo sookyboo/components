@@ -36,7 +36,7 @@ transmute() {
   export EXTRACTED_PATH=""
 
   # component_recipe.json file information extraction
-  component_recipe_contents=$(jq -r '.' "$component_recipe_file")
+  component_recipe_contents=$(python3 "$SCRIPT_DIR/lib/resolve_recipe.py" "$component_recipe_file")
   export COMPONENT_NAME="$(jq -r '. | keys[]' <<< $component_recipe_contents)"
 
   if [[ -d "$WORKDIR" ]]; then # If a workdir already exists, clear it
@@ -58,6 +58,9 @@ transmute() {
       return 1
       ;;
   esac
+
+  export RESOLVED_RECIPE_FILE="$WORKDIR/$COMPONENT_NAME-resolved-recipe.json"
+  printf '%s\n' "$component_recipe_contents" > "$RESOLVED_RECIPE_FILE"
 
   export COMPONENT_ARTIFACT_ROOT="$WORKDIR/$COMPONENT_NAME-artifact" # Initialize the final destination for kept files
   if [[ ! "$RESOLVE_VERSION" == "true" ]]; then

@@ -10,62 +10,74 @@
         {
           "type": "dir",
           "source": "bin",
-          "dest": "bin"
+          "dest": "bin",
+          "id": "bin"
         },
         {
           "type": "dir",
           "source": "share/ppsspp/assets/",
-          "dest": "bin/assets/"
+          "dest": "bin/assets/",
+          "id": "bin_assets"
         },
         {
           "type": "create",
           "dest": "component_version",
-          "contents": "$SOURCE_VERSION"
+          "contents": "$SOURCE_VERSION",
+          "id": "component_version"
         },
         {
           "type": "dir",
           "source": "$REPO_ROOT/$COMPONENT_NAME/rd_assets/rd_config",
-          "dest": "rd_config"
+          "dest": "rd_config",
+          "id": "rd_config"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_functions.sh",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "component_functions"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_launcher.sh",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "component_launcher"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_manifest.json",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "manifest_file"
         },
         {
           "type": "file",
           "source": "$REPO_ROOT/$COMPONENT_NAME/component_recipe.json",
-          "dest": "$COMPONENT_ARTIFACT_ROOT"
+          "dest": "$COMPONENT_ARTIFACT_ROOT",
+          "id": "recipe_file"
         }
       ],
       "libs": [
         {
           "library": "libGLEW.so.2.2",
           "source": "lib",
-          "dest": "shared-libs"
+          "dest": "shared-libs",
+          "id": "libglew"
         },
         {
           "library": "libGLU.so.1",
           "source": "lib",
-          "dest": "shared-libs"
+          "dest": "shared-libs",
+          "id": "libglu"
         },
         {
           "library": "libSDL2_ttf-2.0.so.0",
           "runtime_name": "org.freedesktop.Platform",
           "runtime_version": "24.08",
-          "dest": "shared-libs"
+          "dest": "shared-libs",
+          "id": "libsdl2_ttf_2_0"
         }
-      ]
+      ],
+      "id": "app"
     },
     {
       "source_url": "https://raw.githubusercontent.com/Saramagrean/CWCheat-Database-Plus-/refs/heads/master/cheat.db",
@@ -76,9 +88,11 @@
         {
           "type": "file",
           "source": "$WORKDIR/cheat.db",
-          "dest": "rd_extras"
+          "dest": "rd_extras",
+          "id": "rd_extras"
         }
-      ]
+      ],
+      "id": "cheat_database"
     },
     {
       "source_url": "https://github.com/hrydgard/ppsspp/archive/refs/heads/master.zip",
@@ -88,9 +102,11 @@
         {
           "type": "archive",
           "source": "ppsspp-master/assets",
-          "dest": "rd_extras/ppsspp_foss_bios"
+          "dest": "rd_extras/ppsspp_foss_bios",
+          "id": "rd_extras_ppsspp_foss_bios"
         }
-      ]
+      ],
+      "id": "source_archive"
     }
   ]
 }

@@ -6,6 +6,35 @@ The Alchemist is a tool for building component artifacts from JSON recipes. It d
 
 Alchemist recipes are JSON files that define how to build a component. Each recipe contains sources (downloads), assets (files to gather), and libraries (dependencies).
 
+## Recipe inheritance
+
+A recipe can inherit a parent recipe and override only architecture-specific fields. The parent path is relative to the child recipe. Parent source objects and any assets or libraries that need individual overrides must have unique `id` fields.
+
+```json
+{
+  "example": {
+    "parent": "../../example/component_recipe.json",
+    "overrides": {
+      "sources": {
+        "app": {
+          "set": { "version": "arm-version" },
+          "assets": {
+            "recipe_file": {
+              "set": { "source": "$REPO_ROOT/linux-arm64/example/component_recipe.json" }
+            }
+          },
+          "libs": {
+            "x86_only_library": { "remove": true }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+`set` merges fields into the identified source, asset, or library. `remove: true` removes an inherited entry. Unchanged entries are inherited as-is. Alchemist resolves the parent before processing the recipe; recipes without a `parent` remain standalone JSON source arrays.
+
 ## Asset Handlers
 
 Asset handlers process different types of assets in recipes. Each handler supports specific types and performs operations like copying files, creating archives, or running scripts.
